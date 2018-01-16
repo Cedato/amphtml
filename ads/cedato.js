@@ -23,31 +23,31 @@ import {parseUrl} from '../src/url';
  * @param {!Object} data
  */
 export function cedato(global, data) {
-  validateData(data, ['player']);
+  validateData(data, ['id'], ['domain', 'servingDomain', 'subid', 'version', 'extraParams']);
 
-  const params = tryParseJson(data.player) || {};
-  if (!params || !params.playerId) {
+  if (!data || !data.id) {
     global.context.noContentAvailable();
     return;
   }
 
   const cb = (Math.random() * 10000 | 0);
-  const domain = parseUrl(global.context.sourceUrl).origin || null;
+  const domain = data.domain || parseUrl(global.context.sourceUrl).origin || null;
 
   /* Create div for ad to target */
   const playerDiv = window.document.createElement('div');
-  playerDiv.id = 'video' + params.playerId + cb;
+  playerDiv.id = 'video' + data.id + cb;
   playerDiv.style = 'width: 100%; height: 100%;';
   const playerScript = window.document.createElement('script');
   const srcParams = [
-    'https://p.' + (params.servingDomain || 'algovid.com') + '/player/player.js',
-    '?p=' + params.playerId,
+    'https://p.' + (data.servingDomain || 'algovid.com') + '/player/player.js',
+    '?p=' + data.id,
     '&cb=' + cb,
-    (params.version ? '&pv=' + params.version : ''),
+    (data.version ? '&pv=' + data.version : ''),
+    (data.subid ? '&subid=' + data.subid : ''),
     '&w=' + data.width,
     '&h=' + data.height,
     (domain ? '&d=' + encodeURIComponent(domain) : ''),
-    (params.extraParams || ''),
+    (data.extraParams || ''),
   ];
 
   //global.CEDATO_INIT = [];
