@@ -224,6 +224,7 @@ See [amp-ad rules](https://github.com/ampproject/amphtml/blob/master/extensions/
 - [CA A.J.A. Infeed](../../ads/caajainfeed.md)
 - [CA-ProFit-X](../../ads/caprofitx.md)
 - [Chargeads](../../ads/chargeads.md)
+- [Cedato](../../ads/cedato.md)
 - [Colombia](../../ads/colombia.md)
 - [Connatix](../../ads/connatix.md)
 - [Content.ad](../../ads/contentad.md)
