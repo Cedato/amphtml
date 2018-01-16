@@ -21,7 +21,8 @@ limitations under the License.
 ```html
 <amp-ad width=300 height=250
     type="cedato"
-    data-player='{ "playerId": "58919158", "subId": "subid" }'>
+    data-id="58919158",
+    data-subId="subid">
 </amp-ad>
 ```
 
@@ -30,12 +31,8 @@ limitations under the License.
 For semantics of configuration, please see ad network documentation.
 
 Supported parameters:
-
-- data-player
-
-Supported via `data-player` attribute:
--  (Required) playerId - the id of the player - supply ID
--  (Optional) servingDomain - the domain from which the player is being launched; default: 'algovid.com'
--  (Optional) subId - subid
--  (Optional) version - version of the player that is being used
--  (Optional) extraParams - A number of additional player tag parameters can be set in 'extraParams' using a & sign as a separator
+-  (Required) data-id - the id of the player - supply ID
+-  (Optional) data-domain - page domain reported to the player
+-  (Optional) data-servingDomain - the domain from which the player is served
+-  (Optional) data-subId - player subid
+-  (Optional) data-extraParams - additional player tag parameters can be set in the 'extraParams' query string 
