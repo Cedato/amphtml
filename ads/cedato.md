@@ -21,7 +21,7 @@ limitations under the License.
 ```html
 <amp-ad width=300 height=250
     type="cedato"
-    data-id="58919158",
+    data-id="1372181739"
     data-subId="subid">
 </amp-ad>
 ```

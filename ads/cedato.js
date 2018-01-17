@@ -15,7 +15,6 @@
  */
 
 import {validateData} from '../3p/3p';
-import {tryParseJson} from '../src/json.js';
 import {parseUrl} from '../src/url';
 
 /**
@@ -42,15 +41,14 @@ export function cedato(global, data) {
     'https://p.' + (data.servingDomain || 'algovid.com') + '/player/player.js',
     '?p=' + data.id,
     '&cb=' + cb,
-    (data.version ? '&pv=' + data.version : ''),
-    (data.subid ? '&subid=' + data.subid : ''),
     '&w=' + data.width,
     '&h=' + data.height,
+    (data.version ? '&pv=' + data.version : ''),
+    (data.subid ? '&subid=' + data.subid : ''),
     (domain ? '&d=' + encodeURIComponent(domain) : ''),
     (data.extraParams || ''),
   ];
 
-  //global.CEDATO_INIT = [];
   playerScript.onload = () => {
     global.context.renderStart();
   };
