@@ -33,10 +33,10 @@ export function cedato(global, data) {
   const domain = data.domain || parseUrl(global.context.sourceUrl).origin || null;
 
   /* Create div for ad to target */
-  const playerDiv = window.document.createElement('div');
+  const playerDiv = global.document.createElement('div');
   playerDiv.id = 'video' + data.id + cb;
   playerDiv.style = 'width: 100%; height: 100%;';
-  const playerScript = window.document.createElement('script');
+  const playerScript = global.document.createElement('script');
   const srcParams = [
     'https://p.' + (data.servingDomain || 'algovid.com') + '/player/player.js',
     '?p=' + data.id,
