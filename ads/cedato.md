@@ -21,14 +21,14 @@ limitations under the License.
 ```html
 <amp-ad width=300 height=250
     type="cedato"
-    data-id="1372181739"
+    data-id="303084288",
     data-subId="subid">
 </amp-ad>
 ```
 
 ## Configuration
 
-For semantics of configuration, please see ad network documentation.
+For semantics of configuration, please see ad network documentation. For additional details and support contact support@cedato.com
 
 Supported parameters:
 -  (Required) data-id - the id of the player - supply ID
