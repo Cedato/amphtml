@@ -693,10 +693,15 @@ app.get(['/examples/*.html', '/test/manual/*.html'], (req, res, next) => {
 
     // Extract amp-ad for the given 'type' specified in URL query.
     if (req.path.indexOf('/examples/ads.amp.html') == 0 && req.query.type) {
-      const ads = file.match(
+      
+      try {
+        const ads = file.match(
           elementExtractor('(amp-ad|amp-embed)', req.query.type));
-      file = file.replace(
+        file = file.replace(
           /<body>[\s\S]+<\/body>/m, '<body>' + ads.join('') + '</body>');
+      } catch(e) {
+        console.warn("Error extracting:" + e.message);
+      }
     }
 
     // Extract amp-analytics for the given 'type' specified in URL query.
@@ -736,7 +741,6 @@ function escapeRegExp(string) {
 }
 
 function elementExtractor(tagName, type) {
-  tagName = escapeRegExp(tagName);
   type = escapeRegExp(type);
   return new RegExp(
       `<${tagName} [^>]*['"]${type}['"][^>]*>([\\s\\S]+?)</${tagName}>`,
